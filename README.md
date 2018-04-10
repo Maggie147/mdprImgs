@@ -1,4 +1,6 @@
-# mdpr_getSrcimg
+# mdprImgs
+
+# 简介
 获取[mdpr网站](https://mdpr.jp/)图片集原图
 eg: "http://mdpr.jp/photo/detail/4810818"
 
