@@ -3,7 +3,8 @@
 """
 __title__ = 'python_2.7 [requests] get image v1.0'
 __author__ = 'xxxx'
-__mtime__ = '2017-10-31'
+__ctime__ = '2017-10-31'
+__mtime__ = '2018-04-10'
 
 """
 
@@ -68,15 +69,15 @@ def GetMsgEx(url, para=None, cookies=None, data=None, filename=None, debug=0):
 	if debug:
 		print url
 		print response.status_code
-		pprint.pprint(headers) 
+		pprint.pprint(headers)
 
 	if filename:
 		with open(filename, 'wb') as fd:
 			for response_data in response.iter_content(1024):
 				fd.write(response_data)
-		return filename				
+		return filename
 	else:
-		return response.text 
+		return response.text
 
 
 def get_img(argv):
@@ -97,7 +98,8 @@ def get_img(argv):
 		return None
 
 	''' get img name'''
-	img_name = img_src.split('/')[-1]
+	img_name_tmp = img_src.split('/')[-1]
+	img_name = img_name_tmp.split('?')[0]
 	img_path = photo_folder.strip() + img_name.strip()
 
 	filename = GetMsgEx(img_src, filename=img_path)
@@ -182,7 +184,7 @@ def main():
 		usage(sys.argv[0])
 		sys.exit(-1)
 
-	''' make sure pic path is ok'''		
+	''' make sure pic path is ok'''
 	if not os.path.exists(para['Path']):
 		os.makedirs(para['Path'])
 
